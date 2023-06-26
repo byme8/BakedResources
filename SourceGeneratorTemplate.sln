@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SourceGeneratorTemplate.SourceGenerator", "src\SourceGeneratorTemplate.SourceGenerator\SourceGeneratorTemplate.SourceGenerator.csproj", "{0E8C106B-03BA-4DA5-967D-084206B95555}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EB2A477A-C71D-4E47-AC2F-F490F8E77309}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{EC5691D8-12D8-4E50-9CA0-B9497FD57148}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SourceGeneratorTemplate.Tests", "src\SourceGeneratorTemplate.Tests\SourceGeneratorTemplate.Tests.csproj", "{9E9F001B-2752-4F8B-B6CF-6E383CA99C91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SourceGeneratorTemplate.TestApp", "src\SourceGeneratorTemplate.TestApp\SourceGeneratorTemplate.TestApp.csproj", "{3D3D65D0-31F7-4AA8-9654-F7D08352B537}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SourceGeneratorTemplate.Core", "src\SourceGeneratorTemplate.Core\SourceGeneratorTemplate.Core.csproj", "{75880494-693B-464F-A60A-5C8654192C12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SourceGeneratorTemplate.Package", "src\SourceGeneratorTemplate.Package\SourceGeneratorTemplate.Package.csproj", "{AA6B15D1-C0A2-4F7F-9D7C-017ED0F4576F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E8C106B-03BA-4DA5-967D-084206B95555}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E8C106B-03BA-4DA5-967D-084206B95555}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E8C106B-03BA-4DA5-967D-084206B95555}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E8C106B-03BA-4DA5-967D-084206B95555}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E9F001B-2752-4F8B-B6CF-6E383CA99C91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E9F001B-2752-4F8B-B6CF-6E383CA99C91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E9F001B-2752-4F8B-B6CF-6E383CA99C91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E9F001B-2752-4F8B-B6CF-6E383CA99C91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D3D65D0-31F7-4AA8-9654-F7D08352B537}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D3D65D0-31F7-4AA8-9654-F7D08352B537}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D3D65D0-31F7-4AA8-9654-F7D08352B537}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D3D65D0-31F7-4AA8-9654-F7D08352B537}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75880494-693B-464F-A60A-5C8654192C12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75880494-693B-464F-A60A-5C8654192C12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75880494-693B-464F-A60A-5C8654192C12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75880494-693B-464F-A60A-5C8654192C12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA6B15D1-C0A2-4F7F-9D7C-017ED0F4576F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA6B15D1-C0A2-4F7F-9D7C-017ED0F4576F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA6B15D1-C0A2-4F7F-9D7C-017ED0F4576F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA6B15D1-C0A2-4F7F-9D7C-017ED0F4576F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0E8C106B-03BA-4DA5-967D-084206B95555} = {EB2A477A-C71D-4E47-AC2F-F490F8E77309}
+		{9E9F001B-2752-4F8B-B6CF-6E383CA99C91} = {EC5691D8-12D8-4E50-9CA0-B9497FD57148}
+		{3D3D65D0-31F7-4AA8-9654-F7D08352B537} = {EC5691D8-12D8-4E50-9CA0-B9497FD57148}
+		{75880494-693B-464F-A60A-5C8654192C12} = {EB2A477A-C71D-4E47-AC2F-F490F8E77309}
+		{AA6B15D1-C0A2-4F7F-9D7C-017ED0F4576F} = {EB2A477A-C71D-4E47-AC2F-F490F8E77309}
+	EndGlobalSection
+EndGlobal

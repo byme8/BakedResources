@@ -1,0 +1,12 @@
+﻿<Project>
+    <PropertyGroup>
+        <Authors>Stanislav Silin</Authors>
+        <PackageProjectUrl></PackageProjectUrl>
+        <RepositoryUrl></RepositoryUrl>
+        <LicenseUrl>https://licenses.nuget.org/MIT</LicenseUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <PackageTags></PackageTags>
+        <NoPackageAnalysis>true</NoPackageAnalysis>
+    </PropertyGroup>
+</Project>

@@ -1,0 +1,9 @@
+.idea
+.vs
+.vscode
+
+bin
+obj
+
+.DS_Store
+*.sln.DotSettings.user
