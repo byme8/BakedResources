@@ -1,4 +1,4 @@
-﻿namespace SourceGeneratorTemplate.TestApp;
+namespace BackedResources.TestApp;
 
 public static class Program
 {

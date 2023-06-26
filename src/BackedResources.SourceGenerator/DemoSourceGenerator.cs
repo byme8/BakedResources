@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Microsoft.CodeAnalysis;
 
-namespace SourceGeneratorTemplate.SourceGenerator;
+namespace BackedResources.SourceGenerator;
 
 [Generator]
 public class DemoSourceGenerator : IIncrementalGenerator
@@ -21,7 +21,7 @@ public class DemoSourceGenerator : IIncrementalGenerator
         var source = $$"""
             using System;
 
-            namespace SourceGeneratorTemplate.SourceGenerator
+            namespace BackedResources.SourceGenerator
             {
                 public static class DemoSourceGenerator
                 {

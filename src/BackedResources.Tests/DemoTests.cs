@@ -1,6 +1,6 @@
-using SourceGeneratorTemplate.Tests.Data;
+using BackedResources.Tests.Data;
 
-namespace SourceGeneratorTemplate.Tests;
+namespace BackedResources.Tests;
 
 [UsesVerify]
 public class DemoTests

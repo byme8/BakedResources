@@ -23,7 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\SourceGeneratorTemplate.SourceGenerator\SourceGeneratorTemplate.SourceGenerator.csproj" />
+      <ProjectReference Include="..\BackedResources.SourceGenerator\BackedResources.SourceGenerator.csproj" />
     </ItemGroup>
 
 </Project>

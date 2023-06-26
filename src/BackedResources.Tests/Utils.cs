@@ -5,9 +5,9 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.CodeAnalysis.Text;
-using SourceGeneratorTemplate.SourceGenerator;
+using BackedResources.SourceGenerator;
 
-namespace SourceGeneratorTemplate.Tests;
+namespace BackedResources.Tests;
 
 public static class TestExtensions
 {

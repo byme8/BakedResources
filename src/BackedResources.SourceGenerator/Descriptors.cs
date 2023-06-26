@@ -1,6 +1,6 @@
 using Microsoft.CodeAnalysis;
 
-namespace SourceGeneratorTemplate.SourceGenerator;
+namespace BackedResources.SourceGenerator;
 
 public class Descriptors
 {

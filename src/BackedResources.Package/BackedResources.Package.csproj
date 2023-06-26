@@ -15,8 +15,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\SourceGeneratorTemplate.Core\SourceGeneratorTemplate.Core.csproj" />
-      <ProjectReference Include="..\SourceGeneratorTemplate.SourceGenerator\SourceGeneratorTemplate.SourceGenerator.csproj" />
+      <ProjectReference Include="..\BackedResources.Core\BackedResources.Core.csproj" />
+      <ProjectReference Include="..\BackedResources.SourceGenerator\BackedResources.SourceGenerator.csproj" />
     </ItemGroup>
 
     <Target Name="_AddAnalyzersToOutput">

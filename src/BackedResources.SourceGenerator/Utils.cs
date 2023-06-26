@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
 
-namespace SourceGeneratorTemplate.SourceGenerator;
+namespace BackedResources.SourceGenerator;
 
 public static class Utils
 {

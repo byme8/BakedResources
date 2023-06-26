@@ -4,7 +4,7 @@ using Microsoft.CodeAnalysis.Diagnostics;
 using LanguageNames = Microsoft.CodeAnalysis.LanguageNames;
 using SyntaxKind = Microsoft.CodeAnalysis.CSharp.SyntaxKind;
 
-namespace SourceGeneratorTemplate.SourceGenerator;
+namespace BackedResources.SourceGenerator;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
 public class DemoAnalyzer : DiagnosticAnalyzer
