@@ -1,0 +1,63 @@
+﻿{
+  BackedResources.SourceGenerator/BackedResources.SourceGenerator.BackedResourcesSourceGenerator/BackeResources.g.cs:
+using System;
+
+namespace BackedResources
+{
+    public static partial class BackedResourcesTestApp
+    {
+        [global::System.Runtime.CompilerServices.ModuleInitializerAttribute]
+        public static void Initialize()
+        {
+            GraphqlFiles.Queries.Users.GetUsers = "mutation GetUser {\n  users {\n    id\n    name\n    email\n  }\n}";
+            GraphqlFiles.Queries.Users.NewUser = "mutation NewUser($name: String!, $email: String!, $password: String!) {\n  createUser(name: $name, email: $email, password: $password) {\n    id\n    name\n    email\n  }\n}";
+            SqlFiles.Sql.GetUsers = "select Id, FirstName, LastName\nfrom Users;";
+        }
+    }
+},
+  BackedResources.SourceGenerator/BackedResources.SourceGenerator.BackedResourcesSourceGenerator/Queries.Users.GetUsers.graphql.g.cs:
+using System;
+
+namespace BackedResources
+{
+    public static partial class GraphqlFiles
+    {
+        public static partial class Queries
+        {
+            public static partial class Users
+            {
+                public static string GetUsers { get; set; }
+            }
+        }
+    }
+},
+  BackedResources.SourceGenerator/BackedResources.SourceGenerator.BackedResourcesSourceGenerator/Queries.Users.NewUser.graphql.g.cs:
+using System;
+
+namespace BackedResources
+{
+    public static partial class GraphqlFiles
+    {
+        public static partial class Queries
+        {
+            public static partial class Users
+            {
+                public static string NewUser { get; set; }
+            }
+        }
+    }
+},
+  BackedResources.SourceGenerator/BackedResources.SourceGenerator.BackedResourcesSourceGenerator/Sql.GetUsers.sql.g.cs:
+using System;
+
+namespace BackedResources
+{
+    public static partial class SqlFiles
+    {
+        public static partial class Sql
+        {
+            public static string GetUsers { get; set; }
+        }
+    }
+}
+}

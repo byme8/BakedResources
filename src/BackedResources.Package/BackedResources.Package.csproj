@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <IncludeBuildOutput>false</IncludeBuildOutput>
@@ -9,8 +9,8 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <PackageId></PackageId>
-        <Description></Description>
+        <PackageId>BackedResources</PackageId>
+        <Description>The source generator that embeds additional files into assembly as static variables.</Description>
         <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);_AddAnalyzersToOutput</TargetsForTfmSpecificContentInPackage>
     </PropertyGroup>
 
@@ -21,8 +21,8 @@
 
     <Target Name="_AddAnalyzersToOutput">
         <ItemGroup>
-            <TfmSpecificPackageFile Include="$(OutputPath)\" PackagePath="lib/$(TargetFramework)" />
-            <TfmSpecificPackageFile Include="$(OutputPath)\" PackagePath="analyzers/dotnet/cs" />
+            <TfmSpecificPackageFile Include="$(MSBuildThisFileDirectory)/../BackedResources.SourceGenerator/BakedFiles.props" PackagePath="build" />
+            <TfmSpecificPackageFile Include="$(OutputPath)/BackedResources.SourceGenerator.dll" PackagePath="analyzers/dotnet/cs" />
         </ItemGroup>
     </Target>
 </Project>

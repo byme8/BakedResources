@@ -6,6 +6,8 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.CodeAnalysis.Text;
 using BackedResources.SourceGenerator;
+using BackedResources.Tests.Core;
+using BackedResources.Tests.Data;
 
 namespace BackedResources.Tests;
 
@@ -61,6 +63,8 @@ public static class TestExtensions
 
     public static async Task<byte[]> CompileToRealAssemblyAsBytes(this Project project)
     {
+        var currentDirectory = Directory.GetCurrentDirectory();
+        Directory.SetCurrentDirectory(Path.GetDirectoryName(TestProject.ProjectPath)!);
         var newName = $"{project.Name}.Guid{Guid.NewGuid():N}";
         var fixedProject = project.WithAssemblyName(newName);
         var compilation = await fixedProject.GetCompilationAsync();
@@ -72,6 +76,8 @@ public static class TestExtensions
             .Concat(analyzerResults)
             .FirstOrDefault(o => o.Severity == DiagnosticSeverity.Error);
 
+        Directory.SetCurrentDirectory(currentDirectory);
+        
         if (error != null)
         {
             throw new Exception(error.GetMessage());
@@ -94,16 +100,26 @@ public static class TestExtensions
         return result.Diagnostics.ToArray();
     }
 
-    public static async Task<Diagnostic[]?> ApplyGenerator(this Project project, IIncrementalGenerator generator)
+    public static async Task<GeneratorDriverRunResult> ApplyGenerator(this Project project, IIncrementalGenerator generator)
     {
+        var currentDirectory = Directory.GetCurrentDirectory();
+        Directory.SetCurrentDirectory(Path.GetDirectoryName(TestProject.ProjectPath)!);
+        
         project = await project.RemoveSyntaxTreesFromReferences();
 
         var projectCompilation = await project.GetCompilationAsync();
+        var additionalTexts = project.AdditionalDocuments
+            .Select(o => (AdditionalText)new TAdditionalText(o.Name, o.GetTextAsync().Result))
+            .ToArray();
+        
         var driver = CSharpGeneratorDriver.Create(generator)
+            .WithUpdatedAnalyzerConfigOptions(new TAnalyzerConfigOptionsProvider())
+            .AddAdditionalTexts(ImmutableArray.Create(additionalTexts))
             .RunGenerators(projectCompilation!);
 
         var result = driver.GetRunResult();
-        return result.Diagnostics.Where(o => o.Severity == DiagnosticSeverity.Error).ToArray();
+        Directory.SetCurrentDirectory(currentDirectory);
+        return result;
     }
 
     public static async Task<Project> RemoveSyntaxTreesFromReferences(this Project project)

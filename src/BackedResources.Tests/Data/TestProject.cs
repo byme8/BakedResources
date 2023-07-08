@@ -14,12 +14,28 @@ public static class TestProject
 
     static TestProject()
     {
+        ProjectPath = Path.GetFullPath(@$"../../../../{TestAppProjectName}/{TestAppProjectName}.csproj");
         var manager = new AnalyzerManager();
-        manager.GetProject(@$"../../../../{TestAppProjectName}/{TestAppProjectName}.csproj");
+
+        var analyzer = manager.GetProject(ProjectPath);
         Workspace = manager.GetWorkspace();
 
+        var results = analyzer.Build();
+        var result = results.First()!;
+
         Project = Workspace.CurrentSolution.Projects.First(o => o.Name == TestAppProjectName);
+        var projectRoot = Path.GetDirectoryName(Project.FilePath)!;
+        foreach (var additionalFile in result.Items["BakedFiles"])
+        {
+            var path = Path.Combine(projectRoot, additionalFile.ItemSpec);
+            Project = Project
+                .AddAdditionalDocument(path, File.ReadAllText(path))
+                .Project;
+            
+        }
     }
+
+    public static string ProjectPath { get; set; }
 
     public static Project Project { get; }
 

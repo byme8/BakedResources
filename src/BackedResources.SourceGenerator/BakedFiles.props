@@ -1,0 +1,6 @@
+<Project>
+    <ItemGroup>
+        <AdditionalFiles Remove="@(BakedFiles)" />
+        <AdditionalFiles Include="@(BakedFiles)" />
+    </ItemGroup>
+</Project>

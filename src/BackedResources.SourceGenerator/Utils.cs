@@ -11,15 +11,33 @@ public static class Utils
 {
     public const string EditorBrowsable = "[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]";
 
-    public static string GetDuckImplementationClassName(ITypeSymbol duckInterface)
+    public static string[] ToPathSegments(this string path)
     {
-        return $"Duck_{duckInterface.ToSafeGlobalName()}";
+        return path.Split(new[] { '/', '\\' }, StringSplitOptions.RemoveEmptyEntries)
+            .Select(o => new string(o
+                .Where(o => char.IsDigit(o) || char.IsLetter(o))
+                .ToArray()))
+            .Where(o => !string.IsNullOrEmpty(o))
+            .ToArray();
     }
 
     public static string LowerFirstChar(this string value)
     {
         var stringBuilder = new StringBuilder();
         stringBuilder.Append(char.ToLower(value.First()));
+        var span = value.AsSpan(1);
+        for (int i = 0; i < span.Length; i++)
+        {
+            stringBuilder.Append(span[i]);
+        }
+
+        return stringBuilder.ToString();
+    }
+    
+    public static string UpperFirstChar(this string value)
+    {
+        var stringBuilder = new StringBuilder();
+        stringBuilder.Append(char.ToUpper(value.First()));
         var span = value.AsSpan(1);
         for (int i = 0; i < span.Length; i++)
         {
@@ -167,6 +185,18 @@ public static class Utils
     {
         return $"{left}{text}{right}";
     }
+    
+    public static string Repeat(this string text, int count)
+    {
+        var stringBuilder = new StringBuilder();
+        for (int i = 0; i < count; i++)
+        {
+            stringBuilder.Append(text);
+        }
+
+        return stringBuilder.ToString();
+    }
+   
 
     public static string JoinWithNewLine(this IEnumerable<string> values, string separator = "")
     {
