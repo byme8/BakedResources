@@ -3,14 +3,14 @@ using Buildalyzer;
 using Buildalyzer.Workspaces;
 using Microsoft.CodeAnalysis;
 
-namespace BackedResources.Tests.Data;
+namespace BakedResources.Tests.Data;
 
 public static class TestProject
 {
     public const string ResultCalculation = "var result = 0; // execute place";
     public const string AdditionalCode = "// additional code";
 
-    public const string TestAppProjectName = "BackedResources.TestApp";
+    public const string TestAppProjectName = "BakedResources.TestApp";
 
     static TestProject()
     {

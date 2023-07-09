@@ -9,20 +9,20 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <PackageId>BackedResources</PackageId>
+        <PackageId>BakedResources</PackageId>
         <Description>The source generator that embeds additional files into assembly as static variables.</Description>
         <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);_AddAnalyzersToOutput</TargetsForTfmSpecificContentInPackage>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\BackedResources.Core\BackedResources.Core.csproj" />
-      <ProjectReference Include="..\BackedResources.SourceGenerator\BackedResources.SourceGenerator.csproj" />
+      <ProjectReference Include="..\BakedResources.Core\BakedResources.Core.csproj" />
+      <ProjectReference Include="..\BakedResources.SourceGenerator\BakedResources.SourceGenerator.csproj" />
     </ItemGroup>
 
     <Target Name="_AddAnalyzersToOutput">
         <ItemGroup>
-            <TfmSpecificPackageFile Include="$(MSBuildThisFileDirectory)/../BackedResources.SourceGenerator/BakedFiles.props" PackagePath="build/$(TargetFramework)/$(PackageId).props" />
-            <TfmSpecificPackageFile Include="$(OutputPath)/BackedResources.SourceGenerator.dll" PackagePath="analyzers/dotnet/cs" />
+            <TfmSpecificPackageFile Include="$(MSBuildThisFileDirectory)/../BakedResources.SourceGenerator/BakedFiles.props" PackagePath="build/$(TargetFramework)/$(PackageId).props" />
+            <TfmSpecificPackageFile Include="$(OutputPath)/BakedResources.SourceGenerator.dll" PackagePath="analyzers/dotnet/cs" />
         </ItemGroup>
     </Target>
 </Project>

@@ -1,4 +1,4 @@
-namespace BackedResources.TestApp;
+namespace BakedResources.TestApp;
 
 public static class Program
 {

@@ -6,10 +6,10 @@ using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 
-namespace BackedResources.SourceGenerator;
+namespace BakedResources.SourceGenerator;
 
 [Generator]
-public class BackedResourcesSourceGenerator : IIncrementalGenerator
+public class BakedResourcesSourceGenerator : IIncrementalGenerator
 {
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
@@ -65,7 +65,7 @@ public class BackedResourcesSourceGenerator : IIncrementalGenerator
         var source = $$"""
             using System;
 
-            namespace BackedResources
+            namespace BakedResources
             {
                 public static partial class {{projectName}}
                 {
@@ -92,7 +92,7 @@ public class BackedResourcesSourceGenerator : IIncrementalGenerator
             return;
         }
 
-        ctx.AddSource("BackedResources.g.cs", formattedSource);
+        ctx.AddSource("BakedResources.g.cs", formattedSource);
     }
 
     private void Generate(
@@ -106,7 +106,7 @@ public class BackedResourcesSourceGenerator : IIncrementalGenerator
         var source = $$"""
             using System;
 
-            namespace BackedResources
+            namespace BakedResources
             {
                 public static partial class {{fileExtension.UpperFirstChar()}}Files
                 {

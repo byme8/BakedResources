@@ -5,11 +5,11 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.CodeAnalysis.Text;
-using BackedResources.SourceGenerator;
-using BackedResources.Tests.Core;
-using BackedResources.Tests.Data;
+using BakedResources.SourceGenerator;
+using BakedResources.Tests.Core;
+using BakedResources.Tests.Data;
 
-namespace BackedResources.Tests;
+namespace BakedResources.Tests;
 
 public static class TestExtensions
 {

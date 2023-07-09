@@ -13,7 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\BackedResources.SourceGenerator\BackedResources.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+        <ProjectReference Include="..\BakedResources.SourceGenerator\BakedResources.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     </ItemGroup>
 
     <Target Name="MyCustomTarget" BeforeTargets="Build">
@@ -21,6 +21,6 @@
         <Message Importance="high" Text="AAA %(AdditionalFiles.Identity)" />
     </Target>
     
-    <Import Project="..\BackedResources.SourceGenerator\BakedFiles.props" />
+    <Import Project="..\BakedResources.SourceGenerator\BakedFiles.props" />
 
 </Project>

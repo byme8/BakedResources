@@ -24,7 +24,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\BackedResources.SourceGenerator\BackedResources.SourceGenerator.csproj" />
+      <ProjectReference Include="..\BakedResources.SourceGenerator\BakedResources.SourceGenerator.csproj" />
     </ItemGroup>
 
 </Project>

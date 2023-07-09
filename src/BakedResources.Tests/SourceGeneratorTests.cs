@@ -1,7 +1,7 @@
-using BackedResources.SourceGenerator;
-using BackedResources.Tests.Data;
+using BakedResources.SourceGenerator;
+using BakedResources.Tests.Data;
 
-namespace BackedResources.Tests;
+namespace BakedResources.Tests;
 
 [UsesVerify]
 public class SourceGeneratorTests
@@ -10,7 +10,7 @@ public class SourceGeneratorTests
     public async Task CompilationWorks()
     {
         var result =
-            await TestProject.Project.Execute("var result = BackedResources.GraphqlFiles.Queries.Users.GetUsers;");
+            await TestProject.Project.Execute("var result = BakedResources.GraphqlFiles.Queries.Users.GetUsers;");
 
         await Verify(result);
     }
@@ -18,7 +18,7 @@ public class SourceGeneratorTests
     [Fact]
     public async Task AccessorGenerated()
     {
-        var result = await TestProject.Project.ApplyGenerator(new BackedResourcesSourceGenerator());
+        var result = await TestProject.Project.ApplyGenerator(new BakedResourcesSourceGenerator());
         await Verify(result.GeneratedTrees
             .ToDictionary(
                 o => o.FilePath.Replace("\\", "/"),

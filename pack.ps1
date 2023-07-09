@@ -3,4 +3,4 @@ param (
 ) 
 
 dotnet clean
-dotnet pack -c Release ./src/BackedResources.Package/BackedResources.Package.csproj --verbosity normal /p:Version=$version -o ./nugets
+dotnet pack -c Release ./src/BakedResources.Package/BakedResources.Package.csproj --verbosity normal /p:Version=$version -o ./nugets

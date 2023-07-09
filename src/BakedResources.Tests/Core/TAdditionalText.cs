@@ -1,7 +1,7 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
 
-namespace BackedResources.Tests.Core;
+namespace BakedResources.Tests.Core;
 
 public class TAdditionalText : AdditionalText
 {

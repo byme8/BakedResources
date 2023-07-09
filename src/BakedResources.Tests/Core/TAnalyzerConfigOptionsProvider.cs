@@ -1,7 +1,7 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace BackedResources.Tests.Core;
+namespace BakedResources.Tests.Core;
 
 public class TAnalyzerConfigOptionsProvider : AnalyzerConfigOptionsProvider
 {
