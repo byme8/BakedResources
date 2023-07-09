@@ -21,7 +21,7 @@ public class SourceGeneratorTests
         var result = await TestProject.Project.ApplyGenerator(new BackedResourcesSourceGenerator());
         await Verify(result.GeneratedTrees
             .ToDictionary(
-                o => o.FilePath,
+                o => o.FilePath.Replace("\\", "/"),
                 o => o.ToString()));
     }
 }

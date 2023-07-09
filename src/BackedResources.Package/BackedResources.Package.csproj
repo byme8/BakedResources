@@ -21,7 +21,7 @@
 
     <Target Name="_AddAnalyzersToOutput">
         <ItemGroup>
-            <TfmSpecificPackageFile Include="$(MSBuildThisFileDirectory)/../BackedResources.SourceGenerator/BakedFiles.props" PackagePath="build" />
+            <TfmSpecificPackageFile Include="$(MSBuildThisFileDirectory)/../BackedResources.SourceGenerator/BakedFiles.props" PackagePath="build/$(TargetFramework)/$(PackageId).props" />
             <TfmSpecificPackageFile Include="$(OutputPath)/BackedResources.SourceGenerator.dll" PackagePath="analyzers/dotnet/cs" />
         </ItemGroup>
     </Target>

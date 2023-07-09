@@ -16,7 +16,7 @@ public class BackedResourcesSourceGenerator : IIncrementalGenerator
         var options = context.AnalyzerConfigOptionsProvider
             .Select((o, c) => o.GlobalOptions.TryGetValue("build_property.projectdir", out var projectDir)
                 ? projectDir
-                : "");
+                : Environment.CurrentDirectory);
 
         var additionalText = context.AdditionalTextsProvider
             .Select((o, _) => o);
@@ -37,47 +37,62 @@ public class BackedResourcesSourceGenerator : IIncrementalGenerator
     private void GenerateMapping(SourceProductionContext ctx, ImmutableArray<AdditionalText> additionalTexts,
         string projectPath)
     {
-        if (string.IsNullOrEmpty(projectPath))
-        {
-            projectPath = Environment.CurrentDirectory;
-        }
-        
         var initializers = new List<string>();
         foreach (var additionalFile in additionalTexts)
         {
+            if (ctx.CancellationToken.IsCancellationRequested)
+            {
+                return;
+            }
+
             var (filePath, fileExtension, propertyPath) = GetFilePath(additionalFile, projectPath);
-            var content = additionalFile.GetText()!.ToString();
-            var literal = SyntaxFactory.Literal(content).ToFullString();
+            var content = additionalFile.GetText(ctx.CancellationToken)!
+                .ToString()
+                .Replace("\r\n", "\n");
+
+            var literal = SyntaxFactory
+                .Literal(content)
+                .ToFullString();
 
             var initializer = $"{fileExtension.UpperFirstChar()}Files.{propertyPath.Join(".")} = {literal};";
             initializers.Add(initializer);
         }
-        
+
         var projectName = projectPath
             .ToPathSegments()
             .Last();
-        
-        var source = $@"
+
+        var source = $$"""
             using System;
 
             namespace BackedResources
-            {{
-                public static partial class {projectName}
-                {{
+            {
+                public static partial class {{projectName}}
+                {
                     [global::System.Runtime.CompilerServices.ModuleInitializerAttribute]
                     public static void Initialize()
-                    {{
-                        {initializers.JoinWithNewLine()}
-                    }}
-                }}
-            }}
-            ";
-        
+                    {
+                        {{initializers.JoinWithNewLine()}}
+                    }
+                }
+            }
+            """;
+
+        if (ctx.CancellationToken.IsCancellationRequested)
+        {
+            return;
+        }
+
         var formattedSource = SyntaxFactory.ParseCompilationUnit(source)
             .NormalizeWhitespace()
             .ToFullString();
-        
-        ctx.AddSource("BackeResources.g.cs", formattedSource);
+
+        if (ctx.CancellationToken.IsCancellationRequested)
+        {
+            return;
+        }
+
+        ctx.AddSource("BackedResources.g.cs", formattedSource);
     }
 
     private void Generate(
@@ -119,7 +134,7 @@ public class BackedResourcesSourceGenerator : IIncrementalGenerator
         {
             projectPath = Environment.CurrentDirectory;
         }
-        
+
         var filePath = Path.GetRelativePath(projectPath, additionalFile.Path);
         var fileExtension = Path.GetExtension(filePath).Trim('.');
         var filePathWithoutExtension = Path.ChangeExtension(filePath, null);

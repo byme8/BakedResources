@@ -1,5 +1,5 @@
 ﻿{
-  BackedResources.SourceGenerator/BackedResources.SourceGenerator.BackedResourcesSourceGenerator/BackeResources.g.cs:
+  BackedResources.SourceGenerator/BackedResources.SourceGenerator.BackedResourcesSourceGenerator/BackedResources.g.cs:
 using System;
 
 namespace BackedResources

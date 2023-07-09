@@ -68,12 +68,8 @@ public static class TestExtensions
         var newName = $"{project.Name}.Guid{Guid.NewGuid():N}";
         var fixedProject = project.WithAssemblyName(newName);
         var compilation = await fixedProject.GetCompilationAsync();
-        var analyzerResults = await compilation!
-            .WithAnalyzers(ImmutableArray.Create<DiagnosticAnalyzer>(new DemoAnalyzer()))
-            .GetAllDiagnosticsAsync();
 
         var error = compilation!.GetDiagnostics()
-            .Concat(analyzerResults)
             .FirstOrDefault(o => o.Severity == DiagnosticSeverity.Error);
 
         Directory.SetCurrentDirectory(currentDirectory);
