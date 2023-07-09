@@ -2,23 +2,35 @@
   BakedResources.SourceGenerator/BakedResources.SourceGenerator.BakedResourcesSourceGenerator/BakedResources.g.cs:
 using System;
 
-namespace BakedResources
+namespace BakedResources.BakedResourcesTestApp.Internal
 {
-    public static partial class BakedResourcesTestApp
+    [global::System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+    public static class BakedResourcesInitializer
     {
         [global::System.Runtime.CompilerServices.ModuleInitializerAttribute]
         public static void Initialize()
         {
+            JsonFiles.config = "{\n  \"connectionString\" : \"database\"\n}";
             GraphqlFiles.Queries.Users.GetUsers = "mutation GetUser {\n  users {\n    id\n    name\n    email\n  }\n}";
             GraphqlFiles.Queries.Users.NewUser = "mutation NewUser($name: String!, $email: String!, $password: String!) {\n  createUser(name: $name, email: $email, password: $password) {\n    id\n    name\n    email\n  }\n}";
             SqlFiles.Sql.GetUsers = "select Id, FirstName, LastName\nfrom Users;";
         }
     }
 },
-  BakedResources.SourceGenerator/BakedResources.SourceGenerator.BakedResourcesSourceGenerator/Queries.Users.GetUsers.graphql.g.cs:
+  BakedResources.SourceGenerator/BakedResources.SourceGenerator.BakedResourcesSourceGenerator/config.b.json.g.cs:
 using System;
 
-namespace BakedResources
+namespace BakedResources.BakedResourcesTestApp
+{
+    public static partial class JsonFiles
+    {
+        public static string config { get; set; }
+    }
+},
+  BakedResources.SourceGenerator/BakedResources.SourceGenerator.BakedResourcesSourceGenerator/Queries.Users.GetUsers.baked.graphql.g.cs:
+using System;
+
+namespace BakedResources.BakedResourcesTestApp
 {
     public static partial class GraphqlFiles
     {
@@ -31,10 +43,10 @@ namespace BakedResources
         }
     }
 },
-  BakedResources.SourceGenerator/BakedResources.SourceGenerator.BakedResourcesSourceGenerator/Queries.Users.NewUser.graphql.g.cs:
+  BakedResources.SourceGenerator/BakedResources.SourceGenerator.BakedResourcesSourceGenerator/Queries.Users.NewUser.b.graphql.g.cs:
 using System;
 
-namespace BakedResources
+namespace BakedResources.BakedResourcesTestApp
 {
     public static partial class GraphqlFiles
     {
@@ -47,10 +59,10 @@ namespace BakedResources
         }
     }
 },
-  BakedResources.SourceGenerator/BakedResources.SourceGenerator.BakedResourcesSourceGenerator/Sql.GetUsers.sql.g.cs:
+  BakedResources.SourceGenerator/BakedResources.SourceGenerator.BakedResourcesSourceGenerator/Sql.GetUsers.b.sql.g.cs:
 using System;
 
-namespace BakedResources
+namespace BakedResources.BakedResourcesTestApp
 {
     public static partial class SqlFiles
     {

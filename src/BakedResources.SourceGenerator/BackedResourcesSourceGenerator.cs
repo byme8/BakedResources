@@ -19,8 +19,9 @@ public class BakedResourcesSourceGenerator : IIncrementalGenerator
                 : Environment.CurrentDirectory);
 
         var additionalText = context.AdditionalTextsProvider
-            .Select((o, _) => o);
-
+            .Select((o, _) => o)
+            .Where(o => o.Path.Contains(".baked.") || o.Path.Contains(".b."));
+    
         var fileAndOptions = additionalText
             .Combine(options);
 
@@ -37,6 +38,7 @@ public class BakedResourcesSourceGenerator : IIncrementalGenerator
     private void GenerateMapping(SourceProductionContext ctx, ImmutableArray<AdditionalText> additionalTexts,
         string projectPath)
     {
+
         var initializers = new List<string>();
         foreach (var additionalFile in additionalTexts)
         {
@@ -65,9 +67,10 @@ public class BakedResourcesSourceGenerator : IIncrementalGenerator
         var source = $$"""
             using System;
 
-            namespace BakedResources
+            namespace BakedResources.{{projectName}}.Internal
             {
-                public static partial class {{projectName}}
+                [global::System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+                public static class BakedResourcesInitializer
                 {
                     [global::System.Runtime.CompilerServices.ModuleInitializerAttribute]
                     public static void Initialize()
@@ -103,10 +106,15 @@ public class BakedResourcesSourceGenerator : IIncrementalGenerator
         var (filePath, fileExtension, propertyPath) = GetFilePath(additionalFile, projectPath);
 
         var classHierarchy = CreateHierarchy(propertyPath, 0);
+
+        var projectName = projectPath
+            .ToPathSegments()
+            .Last();
+
         var source = $$"""
             using System;
 
-            namespace BakedResources
+            namespace BakedResources.{{projectName}}
             {
                 public static partial class {{fileExtension.UpperFirstChar()}}Files
                 {
@@ -130,14 +138,10 @@ public class BakedResourcesSourceGenerator : IIncrementalGenerator
         AdditionalText additionalFile,
         string projectPath)
     {
-        if (string.IsNullOrEmpty(projectPath))
-        {
-            projectPath = Environment.CurrentDirectory;
-        }
-
-        var filePath = Path.GetRelativePath(projectPath, additionalFile.Path);
+        var filePath = additionalFile.Path.Replace(projectPath, "");
         var fileExtension = Path.GetExtension(filePath).Trim('.');
-        var filePathWithoutExtension = Path.ChangeExtension(filePath, null);
+        var filePathWithoutExtension = Path.ChangeExtension(filePath, null); // remove extension
+        filePathWithoutExtension = Path.ChangeExtension(filePathWithoutExtension, null); // remove .baked.
 
         var propertyPath = filePathWithoutExtension.ToPathSegments();
 

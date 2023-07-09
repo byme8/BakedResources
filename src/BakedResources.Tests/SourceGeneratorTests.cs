@@ -10,7 +10,7 @@ public class SourceGeneratorTests
     public async Task CompilationWorks()
     {
         var result =
-            await TestProject.Project.Execute("var result = BakedResources.GraphqlFiles.Queries.Users.GetUsers;");
+            await TestProject.Project.Execute("var result = BakedResources.BakedResourcesTestApp.GraphqlFiles.Queries.Users.GetUsers;");
 
         await Verify(result);
     }

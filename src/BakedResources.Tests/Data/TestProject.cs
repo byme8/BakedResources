@@ -25,7 +25,7 @@ public static class TestProject
 
         Project = Workspace.CurrentSolution.Projects.First(o => o.Name == TestAppProjectName);
         var projectRoot = Path.GetDirectoryName(Project.FilePath)!;
-        foreach (var additionalFile in result.Items["BakedFiles"])
+        foreach (var additionalFile in result.Items["None"])
         {
             var path = Path.Combine(projectRoot, additionalFile.ItemSpec);
             Project = Project

@@ -1,6 +1,11 @@
 <Project>
+    <PropertyGroup>
+        <AdditionalFileItemNames>$(AdditionalFileItemNames);BakedFiles;None</AdditionalFileItemNames>
+    </PropertyGroup>
     <ItemGroup>
-        <AdditionalFiles Remove="@(BakedFiles)" />
-        <AdditionalFiles Include="@(BakedFiles)" />
+        <BakedFiles Include="**/*.baked.*"/>
+        <BakedFiles Include="**/*.b.*"/>
+        <BakedFiles Include="*.baked.*"/>
+        <BakedFiles Include="*.b.*"/>
     </ItemGroup>
 </Project>

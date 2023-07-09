@@ -8,19 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <BakedFiles Include="**/*.graphql" />
-        <BakedFiles Include="**/*.sql" />
-    </ItemGroup>
-
-    <ItemGroup>
         <ProjectReference Include="..\BakedResources.SourceGenerator\BakedResources.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     </ItemGroup>
 
-    <Target Name="MyCustomTarget" BeforeTargets="Build">
-        <Message Importance="high" Text="BBB %(BakedFiles.Identity)" />
-        <Message Importance="high" Text="AAA %(AdditionalFiles.Identity)" />
-    </Target>
-    
     <Import Project="..\BakedResources.SourceGenerator\BakedFiles.props" />
 
 </Project>
