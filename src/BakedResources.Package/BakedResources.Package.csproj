@@ -6,6 +6,7 @@
         <Nullable>enable</Nullable>
         <IncludeBuildOutput>false</IncludeBuildOutput>
         <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -15,6 +16,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <None Include="../../README.md" Pack="true" PackagePath="\"/>
+
       <ProjectReference Include="..\BakedResources.Core\BakedResources.Core.csproj" />
       <ProjectReference Include="..\BakedResources.SourceGenerator\BakedResources.SourceGenerator.csproj" />
     </ItemGroup>
