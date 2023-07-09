@@ -5,7 +5,7 @@ Baked Resources is a Nuget package that allows you to "bake files" into assembly
 
 # How to use
 
-Let's say you have a file called `` test.txt `` in your project and we want to baked it. To do that, intall the NuGet package `` BakedResoureces ``:
+Let's say you have a file called `` test.txt `` in your project, and we want to bake it. To do that, install the NuGet package `` BakedResoureces ``:
 ``` bash
 dotnet add package BakedResources
 ```
