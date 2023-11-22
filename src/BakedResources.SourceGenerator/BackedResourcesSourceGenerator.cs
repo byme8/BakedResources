@@ -20,7 +20,7 @@ public class BakedResourcesSourceGenerator : IIncrementalGenerator
 
         var additionalText = context.AdditionalTextsProvider
             .Select((o, _) => o)
-            .Where(o => o.Path.Contains(".baked.") || o.Path.Contains(".b."));
+            .Where(o => (o.Path.Contains(".baked.") || o.Path.Contains(".b.")) && !o.Path.EndsWith(".g.cs"));
     
         var fileAndOptions = additionalText
             .Combine(options);

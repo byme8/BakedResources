@@ -5,7 +5,6 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.CodeAnalysis.Text;
-using BakedResources.SourceGenerator;
 using BakedResources.Tests.Core;
 using BakedResources.Tests.Data;
 
