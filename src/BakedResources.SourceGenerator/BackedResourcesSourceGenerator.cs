@@ -21,9 +21,7 @@ public class BakedResourcesSourceGenerator : IIncrementalGenerator
         var additionalText = context.AdditionalTextsProvider
             .Select((o, _) => o)
             .Where(o => (o.Path.Contains(".baked.") || o.Path.Contains(".b.")) 
-                        && !o.Path.EndsWith(".g.cs")
-                        && !o.Path.Contains("/bin/")
-                        && !o.Path.Contains("/obj/"));
+                        && !o.Path.EndsWith(".g.cs"));
     
         var fileAndOptions = additionalText
             .Combine(options);
@@ -54,6 +52,12 @@ public class BakedResourcesSourceGenerator : IIncrementalGenerator
             var content = additionalFile.GetText(ctx.CancellationToken)!
                 .ToString()
                 .Replace("\r\n", "\n");
+
+            var first = propertyPath.First();
+            if (first is "bin" or "obj")
+            {
+                continue;
+            }
 
             var literal = SyntaxFactory
                 .Literal(content)
