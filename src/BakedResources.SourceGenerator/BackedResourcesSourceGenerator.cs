@@ -53,8 +53,7 @@ public class BakedResourcesSourceGenerator : IIncrementalGenerator
                 .ToString()
                 .Replace("\r\n", "\n");
 
-            var first = propertyPath.First();
-            if (first is "bin" or "obj")
+            if (IgnoreFile(filePath))
             {
                 continue;
             }
@@ -111,6 +110,10 @@ public class BakedResourcesSourceGenerator : IIncrementalGenerator
         string projectPath)
     {
         var (filePath, fileExtension, propertyPath) = GetFilePath(additionalFile, projectPath);
+        if (IgnoreFile(filePath))
+        {
+            return;
+        }
 
         var classHierarchy = CreateHierarchy(propertyPath, 0);
 
@@ -172,5 +175,11 @@ public class BakedResourcesSourceGenerator : IIncrementalGenerator
                     {{CreateHierarchy(propertyPath, next)}}
                 }
                 """;
+    }
+    
+    private bool IgnoreFile(string filePath)
+    {
+        var first = filePath.ToPathSegments().First();
+        return first is "bin" or "obj";
     }
 }

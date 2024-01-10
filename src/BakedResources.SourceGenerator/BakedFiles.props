@@ -7,5 +7,15 @@
         <BakedFiles Include="**/*.b.*"/>
         <BakedFiles Include="*.baked.*"/>
         <BakedFiles Include="*.b.*"/>
+
+        <BakedFiles Remove="**/bin/**/*.baked.*"/>
+        <BakedFiles Remove="**/bin/**/*.b.*"/>
+        <BakedFiles Remove="**/bin/*.baked.*"/>
+        <BakedFiles Remove="**/bin/*.b.*"/>
+
+        <BakedFiles Remove="**/obj/**/*.baked.*"/>
+        <BakedFiles Remove="**/obj/**/*.b.*"/>
+        <BakedFiles Remove="**/obj/*.baked.*"/>
+        <BakedFiles Remove="**/obj/*.b.*"/>
     </ItemGroup>
 </Project>
